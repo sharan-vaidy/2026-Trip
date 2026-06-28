@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NL & France · Jun 28–Jul 7</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --mist: #e8eef4;
+    --canal: #2d6a8f;
+    --gold: #c9922a;
+    --sage: #4a7c59;
+    --brick: #b04a3c;
+    --card: #ffffff;
+    --border: #d4dde6;
+    --text-sub: #6b7c8d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--mist);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--canal);
+    color: white;
+    padding: 20px 16px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .trip-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+  .trip-subtitle {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .flag-row { font-size: 1.4rem; letter-spacing: 4px; }
+
+  /* ── TABS ── */
+  nav {
+    display: flex;
+    background: rgba(0,0,0,0.2);
+    margin-top: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  nav button {
+    flex: 1;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 8px 4px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+  nav button.active {
+    background: white;
+    color: var(--canal);
+    font-weight: 600;
+  }
+
+  /* ── MAIN ── */
+  main { padding: 16px; max-width: 680px; margin: 0 auto; }
+
+  /* ── DAY SELECTOR ── */
+  .day-rail {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 0 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .day-rail::-webkit-scrollbar { display: none; }
+  .day-chip {
+    flex-shrink: 0;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-sub);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .day-chip.active {
+    background: var(--canal);
+    border-color: var(--canal);
+    color: white;
+  }
+  .day-chip:hover:not(.active) {
+    border-color: var(--canal);
+    color: var(--canal);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .card-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 6px;
+  }
+
+  /* ── DAY HEADER ── */
+  .day-header {
+    background: var(--ink);
+    color: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .day-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .day-theme {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 3px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 10px;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 28px;
+    bottom: -2px;
+    width: 1.5px;
+    background: var(--border);
+  }
+  .t-time {
+    text-align: right;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--canal);
+    padding-top: 5px;
+    letter-spacing: 0.02em;
+  }
+  .t-body {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+  }
+  .t-what {
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .t-note {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .t-alert {
+    font-size: 0.68rem;
+    background: #fff3cd;
+    color: #856404;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin-top: 5px;
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  /* ── KEY INFO PILLS ── */
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .pill {
+    background: var(--mist);
+    border-radius: 20px;
+    padding: 5px 11px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .pill.canal { background: #dceef7; color: var(--canal); }
+  .pill.gold { background: #fdf0dc; color: #8a6010; }
+  .pill.sage { background: #dceee3; color: var(--sage); }
+  .pill.brick { background: #f8e4e2; color: var(--brick); }
+
+  /* ── FOOD CARDS ── */
+  .food-city-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 18px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .food-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+  .food-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .food-type {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .food-type.pureveg { color: var(--sage); }
+  .food-type.vegan { color: #5c8c3e; }
+  .food-type.mixed { color: var(--gold); }
+  .food-type.self { color: var(--canal); }
+  .food-address {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    margin-top: 5px;
+  }
+  .food-hours {
+    font-size: 0.68rem;
+    color: var(--text-sub);
+    margin-top: 2px;
+  }
+  .food-note {
+    font-size: 0.7rem;
+    color: var(--ink);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--mist);
+  }
+  .food-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .rating {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .highlight-badge {
+    font-size: 0.62rem;
+    background: #fdf0dc;
+    color: #8a6010;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  /* ── LOGISTICS ── */
+  .logistics-section { margin-bottom: 20px; }
+  .logistics-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--canal);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .logistics-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .logistics-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 9px 12px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    gap: 10px;
+  }
+  .lr-label { font-size: 0.78rem; font-weight: 500; }
+  .lr-value { font-size: 0.75rem; color: var(--text-sub); text-align: right; }
+  .lr-value strong { color: var(--ink); font-weight: 600; }
+
+  .uber-table { width: 100%; border-collapse: collapse; }
+  .uber-table th {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-sub);
+    font-weight: 600;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  .uber-table td {
+    font-size: 0.75rem;
+    padding: 8px 8px;
+    border-bottom: 1px solid var(--mist);
+  }
+  .uber-table tr:last-child td { border-bottom: none; font-weight: 600; }
+  .uber-table .price { font-weight: 600; color: var(--ink); text-align: right; }
+
+  /* ── ESSENTIALS ── */
+  .essentials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .essential-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .ec-icon { font-size: 1.3rem; margin-bottom: 5px; }
+  .ec-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-sub);
+    font-weight: 600;
+  }
+  .ec-value {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+  .ec-sub {
+    font-size: 0.68rem;
+    color: var(--text-sub);
+    margin-top: 2px;
+  }
+
+  /* ── OFFLINE NOTICE ── */
+  .offline-badge {
+    text-align: center;
+    font-size: 0.65rem;
+    color: var(--text-sub);
+    padding: 12px 0 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── HIDDEN ── */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="trip-title">Netherlands &amp; France</div>
+      <div class="trip-subtitle">Jun 28 – Jul 7, 2026 · 4 travellers</div>
+    </div>
+    <div class="flag-row">🇳🇱🇫🇷</div>
+  </div>
+  <nav>
+    <button class="active" onclick="switchTab('itinerary')">Itinerary</button>
+    <button onclick="switchTab('food')">Food</button>
+    <button onclick="switchTab('logistics')">Logistics</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ══════════════ ITINERARY TAB ══════════════ -->
+<div id="tab-itinerary" class="tab-panel active">
+
+  <div class="day-rail" id="dayRail"></div>
+  <div id="dayContent"></div>
+
+</div>
+
+<!-- ══════════════ FOOD TAB ══════════════ -->
+<div id="tab-food" class="tab-panel">
+
+  <div style="margin-bottom:8px;">
+    <div class="pill-row">
+      <span class="pill sage">🟢 Pure Veg Indian</span>
+      <span class="pill sage">🌿 Vegan</span>
+      <span class="pill canal">🔵 Self-cook</span>
+      <span class="pill gold">🟡 French/Dutch veg</span>
+    </div>
+    <p style="font-size:0.7rem;color:var(--text-sub);margin-top:8px;">All spots confirmed vegetarian-friendly. No egg, no fish — always confirm with staff when ordering.</p>
+  </div>
+
+  <div class="food-city-header">🇳🇱 Amsterdam</div>
+
+  <div class="food-card">
+    <div class="food-name">Kailash Parbat ⭐</div>
+    <div class="food-meta">
+      <span class="food-type pureveg">🟢 Pure Veg Indian</span>
+      <span class="rating">4.5★</span>
+      <span class="highlight-badge">Highlight</span>
+    </div>
+    <div class="food-address">📍 Weteringschans 175H</div>
+    <div class="food-hours">🕐 Daily (Tue dinner only)</div>
+    <div class="food-note">Must-reserve. Vada pav, chaat, chole bhature.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">Saravanaa Bhavan</div>
+    <div class="food-meta">
+      <span class="food-type pureveg">🟢 Pure Veg S. Indian</span>
+      <span class="rating">4.1★</span>
+    </div>
+    <div class="food-address">📍 Stadhouderskade 123</div>
+    <div class="food-hours">🕐 Daily 11am–10pm</div>
+    <div class="food-note">Near Museumplein — after Van Gogh. Dosas, idli. Walk-in fine.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">Golden Temple</div>
+    <div class="food-meta">
+      <span class="food-type pureveg">🌱 All-Veg (Indian-style)</span>
+      <span class="rating">4.5★</span>
+    </div>
+    <div class="food-address">📍 Utrechtsestraat 126</div>
+    <div class="food-hours">🕐 Mon–Fri 4:30–11pm, W/E from 1pm</div>
+    <div class="food-note">All-veg. Paneer &amp; tofu masala. Book ahead.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">Madras Diaries</div>
+    <div class="food-meta">
+      <span class="food-type mixed">🟡 South Indian (mixed)</span>
+      <span class="rating">4.6★</span>
+    </div>
+    <div class="food-address">📍 Lange Leidsedwarsstraat 37–41</div>
+    <div class="food-hours">🕐 Daily 11:30am–9:30pm (Mon from 5pm)</div>
+    <div class="food-note">High-rated. Check <em>themadrasdiaries.nl</em> for full veg options.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">TerraZen Centre</div>
+    <div class="food-meta">
+      <span class="food-type vegan">🌿 Vegan (Asian)</span>
+      <span class="rating">4.5★</span>
+    </div>
+    <div class="food-address">📍 Sint Jacobsstraat 19HS</div>
+    <div class="food-hours">🕐 1–3 &amp; 5–10pm (closed Tue)</div>
+    <div class="food-note">All vegan, creative roti wraps &amp; curry.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">Element suite kitchenette</div>
+    <div class="food-meta">
+      <span class="food-type self">🔵 Self-cook</span>
+    </div>
+    <div class="food-address">📍 Your hotel (Zuid)</div>
+    <div class="food-hours">🕐 Anytime</div>
+    <div class="food-note">3 grocers at Gelderlandplein next door. Easy pure-veg breakfasts/dinners. Albert Heijn closes 18:00.</div>
+  </div>
+
+  <div class="food-city-header">🏛 The Hague</div>
+
+  <div class="food-card">
+    <div class="food-name">Falafel / Turkish spots</div>
+    <div class="food-meta">
+      <span class="food-type vegan">🌱 Street veg</span>
+    </div>
+    <div class="food-address">📍 Near Den Haag CS</div>
+    <div class="food-note">Falafel wraps fully veg. <strong>Always confirm no meat stock.</strong></div>
+  </div>
+
+  <div class="food-city-header">🇫🇷 Paris</div>
+
+  <div class="food-card">
+    <div class="food-name">Arya Bhavan ⭐</div>
+    <div class="food-meta">
+      <span class="food-type pureveg">🟢 Pure Veg Indian</span>
+      <span class="rating">4.1★</span>
+      <span class="highlight-badge">Jul 4 arrival</span>
+    </div>
+    <div class="food-address">📍 170 Rue du Faubourg St-Denis</div>
+    <div class="food-hours">🕐 Daily 10am–11pm</div>
+    <div class="food-note">Near Gare du Nord — perfect arrival dinner Jul 4.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">NK Arya Bhavan (Louvre)</div>
+    <div class="food-meta">
+      <span class="food-type pureveg">🟢 Pure Veg S. Indian</span>
+      <span class="rating">4.2★</span>
+    </div>
+    <div class="food-address">📍 3 Rue des Pyramides</div>
+    <div class="food-hours">🕐 Daily 12–10pm</div>
+    <div class="food-note">Central. Mysore masala dosa, filter coffee.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">Maslow</div>
+    <div class="food-meta">
+      <span class="food-type vegan">🌿 Vegetarian/Vegan</span>
+      <span class="rating">4.9★</span>
+    </div>
+    <div class="food-address">📍 14 Quai de la Mégisserie</div>
+    <div class="food-hours">🕐 Daily 12–11pm</div>
+    <div class="food-note">Top-rated plant-based. Near Île de la Cité.</div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-name">Café de Flore ⭐</div>
+    <div class="food-meta">
+      <span class="food-type mixed">🟡 French brasserie</span>
+      <span class="rating">4.2★</span>
+      <span class="highlight-badge">Jul 7 wishlist</span>
+    </div>
+    <div class="food-address">📍 172 Bd Saint-Germain</div>
+    <div class="food-hours">🕐 Daily 7:30am–1:30am</div>
+    <div class="food-note">Your wishlist spot. Veg: omelettes, salade, tartines. Skip egg dishes if needed.</div>
+  </div>
+
+  <div class="food-city-header">🏰 Versailles grounds</div>
+
+  <div class="food-card">
+    <div class="food-name">Palace cafés &amp; boulangeries</div>
+    <div class="food-meta">
+      <span class="food-type mixed">🟡 French veg</span>
+    </div>
+    <div class="food-note">Crêpes with cheese, salads, quiche. Or picnic from a nearby boulangerie. Bag/picnic OK in gardens.</div>
+  </div>
+
+</div>
+
+<!-- ══════════════ LOGISTICS TAB ══════════════ -->
+<div id="tab-logistics" class="tab-panel">
+
+  <div class="logistics-section">
+    <div class="logistics-title">🔑 Bookings &amp; References</div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Eurostar YYZ→CDG→AMS</div>
+        <div class="lr-value">Jun 30 &amp; Jul 4</div>
+      </div>
+      <div class="lr-value"><strong>Ref: Y6D3PJ</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Element by Marriott Amsterdam</div>
+        <div class="lr-value">Jul 1–4 (3 nights)</div>
+      </div>
+      <div class="lr-value"><strong style="color:var(--brick)">⚠ Check inbox</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Novotel Suites CDG</div>
+        <div class="lr-value">Jun 29 night</div>
+      </div>
+      <div class="lr-value"><strong>Check Outlook</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Doubletree Boulogne</div>
+        <div class="lr-value">Jul 4–7 (3 nights)</div>
+      </div>
+      <div class="lr-value"><strong>Check Outlook</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Rijksmuseum × 4</div>
+        <div class="lr-value">Jul 1 · 10:00 timed entry</div>
+      </div>
+      <div class="lr-value"><strong>Booked ✓</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Mauritshuis × 4</div>
+        <div class="lr-value">Jul 3 · 11:00 entry</div>
+      </div>
+      <div class="lr-value"><strong>Booked ✓</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Palace of Versailles × 4</div>
+        <div class="lr-value">Jul 5 · 1:00 PM Passport</div>
+      </div>
+      <div class="lr-value"><strong>Booked ✓</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Big Bus Paris 24h + Arc</div>
+        <div class="lr-value">Jul 6</div>
+      </div>
+      <div class="lr-value"><strong>Booked ✓</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Dutch Countryside Tour</div>
+        <div class="lr-value">Jul 2 (Avion points)</div>
+      </div>
+      <div class="lr-value"><strong>Booked ✓</strong></div>
+    </div>
+  </div>
+
+  <div class="logistics-section">
+    <div class="logistics-title">🚖 Ubers (all 4 travellers)</div>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="uber-table">
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Time</th>
+            <th style="text-align:right">CAD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CDG airport</td><td>Novotel CDG</td><td>15 min</td><td class="price">$22.55</td></tr>
+          <tr><td>Novotel</td><td>Gare du Nord</td><td>1h 30min</td><td class="price">$88.81</td></tr>
+          <tr><td>Gare du Nord</td><td>Doubletree</td><td>30 min</td><td class="price">$45.14</td></tr>
+          <tr><td>Doubletree</td><td>CDG airport</td><td>1h</td><td class="price">$77.48</td></tr>
+          <tr><td colspan="3" style="color:var(--text-sub);font-size:0.72rem;">Total transfers</td><td class="price">$233.98</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="logistics-section">
+    <div class="logistics-title">🚋 Transit in Amsterdam</div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">OV-chip cards</div>
+        <div class="lr-value">Buy 4 at Schiphol station on arrival</div>
+      </div>
+      <div class="lr-value"><strong>Load €25–30 each</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Eurostar → Schiphol (NOT Centraal)</div>
+        <div class="lr-value">Alight at Schiphol Airport station</div>
+      </div>
+      <div class="lr-value"><strong>Coach 18 · 13/14+2</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Schiphol → Amsterdam Zuid</div>
+        <div class="lr-value">NS train, ~6 min, every few min</div>
+      </div>
+      <div class="lr-value"><strong>Tap OV in &amp; out</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Den Haag day trip</div>
+        <div class="lr-value">NS Amsterdam Zuid → Den Haag CS</div>
+      </div>
+      <div class="lr-value"><strong>~€20 balance needed</strong></div>
+    </div>
+  </div>
+
+  <div class="logistics-section">
+    <div class="logistics-title">🚆 Transit in Paris</div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Versailles (Jul 5)</div>
+        <div class="lr-value">RER C → Château Rive Gauche</div>
+      </div>
+      <div class="lr-value"><strong>Navigo Jour z1–5 (×4)</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Eurostar Paris → Schiphol</div>
+        <div class="lr-value">Jul 4 · departs 17:27 Gare du Nord</div>
+      </div>
+      <div class="lr-value"><strong>Coach 4 · 41/42+2</strong></div>
+    </div>
+  </div>
+
+  <div class="logistics-section">
+    <div class="logistics-title">✈️ Flights</div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">YYZ → London Heathrow</div>
+        <div class="lr-value">Jun 28 · departs 22:55</div>
+      </div>
+      <div class="lr-value"><strong>Board 22:10</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">LHR → Paris CDG</div>
+        <div class="lr-value">Jun 29 · departs 15:20 · arrives 17:40</div>
+      </div>
+      <div class="lr-value"><strong>Board 14:40</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">CDG → Toronto YYZ</div>
+        <div class="lr-value">Jul 7 · departs 18:45 · arrives 21:00</div>
+      </div>
+      <div class="lr-value"><strong>Board 18:00</strong></div>
+    </div>
+    <div class="logistics-row">
+      <div>
+        <div class="lr-label">Veg meals</div>
+        <div class="lr-value">No egg, no fish — pre-order via airline</div>
+      </div>
+      <div class="lr-value"><strong>Confirm before Jun 28</strong></div>
+    </div>
+  </div>
+
+  <div class="logistics-section">
+    <div class="logistics-title">💡 Key reminders</div>
+    <div class="essentials-grid">
+      <div class="essential-card">
+        <div class="ec-icon">🚪</div>
+        <div class="ec-label">Eurostar gates</div>
+        <div class="ec-value">Close 10 min before departure</div>
+        <div class="ec-sub">Jun 30: close 09:01 · Jul 4: close 17:17</div>
+      </div>
+      <div class="essential-card">
+        <div class="ec-icon">🏨</div>
+        <div class="ec-label">Check-in times</div>
+        <div class="ec-value">Element opens 15:00</div>
+        <div class="ec-sub">Drop bags at reception on arrival</div>
+      </div>
+      <div class="essential-card">
+        <div class="ec-icon">🛒</div>
+        <div class="ec-label">Groceries AMS</div>
+        <div class="ec-value">Gelderlandplein (next door)</div>
+        <div class="ec-sub">Albert Heijn closes 18:00</div>
+      </div>
+      <div class="essential-card">
+        <div class="ec-icon">📱</div>
+        <div class="ec-label">Rijksmuseum app</div>
+        <div class="ec-value">Download on wifi before Jul 1</div>
+        <div class="ec-sub">Free audio tour — Night Watch first</div>
+      </div>
+      <div class="essential-card">
+        <div class="ec-icon">⛲</div>
+        <div class="ec-label">Versailles fountains</div>
+        <div class="ec-value">Musical Fountains on weekends</div>
+        <div class="ec-sub">Jul 5 is a Sunday ✓</div>
+      </div>
+      <div class="essential-card">
+        <div class="ec-icon">🎟</div>
+        <div class="ec-label">Eiffel Tower</div>
+        <div class="ec-value">Separate timed ticket needed</div>
+        <div class="ec-sub">Not included in Big Bus ticket</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<div class="offline-badge">Works offline · Save to home screen for quick access</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────
+const days = [
+  {
+    id: 0,
+    chip: "Jun 28 ✈",
+    name: "Sunday Jun 28",
+    theme: "Toronto → London (overnight flight)",
+    events: [
+      { time: "Afternoon", what: "Pack · confirm veg (no egg/fish) flight meals", note: "Do via airline manage-booking", alert: null },
+      { time: "~19:00", what: "Leave for YYZ", note: "Be at airport by ~19:55 — 3h before departure", alert: "International check-in closes ~60 min before gate" },
+      { time: "22:55", what: "✈ Depart YYZ → London Heathrow", note: "Boarding ~22:10 · gate closes ~22:35", alert: "Sleep on the plane" },
+    ]
+  },
+  {
+    id: 1,
+    chip: "Jun 29 🛬",
+    name: "Monday Jun 29",
+    theme: "London → Paris CDG",
+    events: [
+      { time: "11:10", what: "Arrive London Heathrow (LHR)", note: "Passport control + terminal change — allow time", alert: null },
+      { time: "11:30–14:30", what: "Layover at LHR", note: "Be at LHR→CDG gate by ~14:50 · veg lunch airside", alert: null },
+      { time: "15:20", what: "✈ Depart LHR → Paris CDG", note: "Boarding ~14:40 · short hop (~1h20)", alert: null },
+      { time: "17:40", what: "Arrive Paris CDG", note: "Uber → Novotel Suites: ~22.55 CAD (15 min)", alert: null },
+      { time: "~18:30", what: "Check in — Novotel Suites CDG", note: "Drop bags, breathe", alert: null },
+      { time: "19:30", what: "Dinner at the Novotel (veg)", note: "Early night — two flights done. Set 6:00 AM alarm.", alert: null },
+    ]
+  },
+  {
+    id: 2,
+    chip: "Jun 30 🚆",
+    name: "Tuesday Jun 30",
+    theme: "Paris → Amsterdam (EARLY START)",
+    events: [
+      { time: "06:00", what: "Wake · breakfast + checkout, Novotel CDG", note: "Bags packed the night before", alert: null },
+      { time: "07:00", what: "🚐 Leave CDG → Paris Gare du Nord", note: "Uber ~1h30 · 88.81 CAD", alert: "Must arrive Gare du Nord by 08:50 at latest" },
+      { time: "08:50", what: "Arrive Gare du Nord · find Eurostar gate", note: "Gate/security closes 09:01 (10 min before departure)", alert: "Don't be late — gate is strict" },
+      { time: "09:21", what: "🚆 EUROSTAR 9321 departs → Schiphol", note: "Coach 18 · seats 13/14 (+2) · 3h09 direct", alert: "Alight at SCHIPHOL — NOT Amsterdam Centraal" },
+      { time: "12:30", what: "Arrive Schiphol Airport station", note: "Buy 4 OV chip cards · load €25–30 each (one buyer)", alert: null },
+      { time: "~12:55", what: "🚆 NS train Schiphol → Amsterdam Zuid", note: "~6 min · every few minutes · tap OV cards in AND out", alert: null },
+      { time: "13:15", what: "Tram/walk to Element · drop bags", note: "Check-in opens 15:00 — reception holds bags · lunch at Gelderlandplein", alert: null },
+      { time: "14:00", what: "Amstelpark stroll (10-min walk)", note: "Calm gardens — decompress", alert: null },
+      { time: "15:00", what: "Check into the suite", note: "Stock kitchenette at Gelderlandplein (AH closes 18:00)", alert: null },
+      { time: "19:00", what: "Easy dinner near the hotel", note: "Cook in suite or local veg restaurant", alert: null },
+    ]
+  },
+  {
+    id: 3,
+    chip: "Jul 1 🎨",
+    name: "Wednesday Jul 1",
+    theme: "Amsterdam · Rijksmuseum + wander",
+    events: [
+      { time: "08:00", what: "Breakfast at hotel", note: "", alert: null },
+      { time: "08:25", what: "🚋 Tram 5 / metro 52 to the centre", note: "Allow ~20 min to Museumplein · tap OV card", alert: null },
+      { time: "10:00", what: "RIJKSMUSEUM — booked 10:00 timed entry ×4", note: "~2.5–3 hrs. Night Watch first. Download app on wifi beforehand.", alert: "Be at entrance by 09:55" },
+      { time: "12:00", what: "Lunch at Museumplein (veg)", note: "Many cafés nearby", alert: null },
+      { time: "13:00", what: "Wander to Dam Square", note: "~15 min tram/walk · Royal Palace exterior + Magna Plaza (free)", alert: null },
+      { time: "14:00", what: "Drift into the Jordaan + canal belt", note: "No fixed list — happen upon places", alert: null },
+      { time: "16:00", what: "Canalside café stop", note: "Relax, explore", alert: null },
+      { time: "19:30", what: "Dinner — Saravanaa Bhavan (pure-veg)", note: "Stadhouderskade 123 · walk-in, no reservation needed", alert: null },
+    ]
+  },
+  {
+    id: 4,
+    chip: "Jul 2 🌷",
+    name: "Thursday Jul 2",
+    theme: "Dutch countryside tour · Zaanse Schans",
+    events: [
+      { time: "07:30", what: "Breakfast", note: "", alert: null },
+      { time: "08:00", what: "🚇 Metro 52 to Centraal-area meeting point", note: "Allow ~20 min from Zuid · covered by OV card", alert: null },
+      { time: "08:45", what: "Arrive meeting point", note: "Confirm exact spot on your tour voucher", alert: "Be there 30 min before tour departs" },
+      { time: "09:00", what: "🚌 Tour departs → Zaanse Schans", note: "Windmills, clog & cheese demos (veg) · ~9 hrs total", alert: null },
+      { time: "12:30", what: "Edam", note: "Cheese town", alert: null },
+      { time: "13:30", what: "Volendam — lunch (own cost)", note: "Veg/falafel available · seafood-heavy area — check carefully", alert: null },
+      { time: "15:00", what: "Marken — former island village", note: "Canal cruise included on this tour", alert: null },
+      { time: "~16:30", what: "Return coach to Amsterdam", note: "Back ~17:30", alert: null },
+      { time: "19:00", what: "Dinner — cook in suite or Jordaan", note: "", alert: null },
+    ]
+  },
+  {
+    id: 5,
+    chip: "Jul 3 🖼",
+    name: "Friday Jul 3",
+    theme: "The Hague day trip · Mauritshuis",
+    events: [
+      { time: "08:30", what: "Breakfast", note: "", alert: null },
+      { time: "09:15", what: "Leave hotel · tram/metro to Amsterdam Zuid station", note: "Tap OV card", alert: null },
+      { time: "09:45", what: "🚆 NS Amsterdam Zuid → Den Haag Centraal", note: "~45 min direct · trains every ~15 min · OV cards in AND out", alert: "NS needs ~€20 balance" },
+      { time: "10:35", what: "Arrive Den Haag · tram/walk to museum", note: "~10 min · HTM tram or walk", alert: null },
+      { time: "11:00", what: "MAURITSHUIS — booked 11:00 entry ×4", note: "~2 hrs. Girl with a Pearl Earring. Free app audio.", alert: "Be at entrance by 10:50" },
+      { time: "13:00", what: "Lunch in Den Haag (falafel/Turkish — veg)", note: "", alert: null },
+      { time: "14:00", what: "Peace Palace visitor centre", note: "Exterior + visitor centre", alert: null },
+      { time: "15:00", what: "🚋 Tram to Scheveningen beach + De Pier", note: "~20 min · North Sea views", alert: null },
+      { time: "17:00", what: "🚆 NS train back to Amsterdam", note: "~45 min", alert: null },
+      { time: "19:00", what: "Dinner — Cook", note: "Pack tonight for tomorrow", alert: null },
+    ]
+  },
+  {
+    id: 6,
+    chip: "Jul 4 🚆",
+    name: "Saturday Jul 4",
+    theme: "Amsterdam → Paris (luggage day)",
+    events: [
+      { time: "09:00", what: "Breakfast · finish packing", note: "Element checkout by 12:00", alert: null },
+      { time: "10:00", what: "Checkout · store bags at reception", note: "", alert: null },
+      { time: "10:30", what: "Amsterdamse Bos — forest walk", note: "Trails, goat farm · calm send-off to Paris", alert: null },
+      { time: "13:00", what: "Lunch at Gelderlandplein", note: "", alert: null },
+      { time: "14:30", what: "Collect bags from hotel", note: "", alert: null },
+      { time: "15:45", what: "🚆 NS Amsterdam Zuid → Schiphol", note: "~6 min · tap OV card · aim to be at Schiphol by ~16:30", alert: null },
+      { time: "16:40", what: "At Schiphol · find Eurostar gate", note: "", alert: "Gate closes 17:17 (10 min before) — board early" },
+      { time: "17:27", what: "🚆 EUROSTAR 9376 Schiphol → Paris", note: "Coach 4 · seats 41/42 (+2) · 3h11 direct", alert: null },
+      { time: "20:38", what: "Arrive Paris Gare du Nord", note: "Uber → Doubletree Boulogne ~30 min: 45.14 CAD", alert: null },
+      { time: "~21:30", what: "Check in · late dinner near hotel", note: "Arya Bhavan near Gare du Nord possible en route", alert: null },
+    ]
+  },
+  {
+    id: 7,
+    chip: "Jul 5 👑",
+    name: "Sunday Jul 5",
+    theme: "Versailles · 1:00 PM Passport",
+    events: [
+      { time: "09:00", what: "Late breakfast / slow morning", note: "Recover from Jul 4 late arrival", alert: null },
+      { time: "10:30", what: "Optional local stroll or rest", note: "", alert: null },
+      { time: "11:00", what: "Leave hotel · metro to RER C station", note: "e.g. via Javel / Pont de l'Alma", alert: null },
+      { time: "11:45", what: "🚆 RER C → Versailles Château Rive Gauche", note: "~40 min · Navigo Jour z1–5 (one buyer gets all 4)", alert: null },
+      { time: "12:40", what: "Arrive Versailles · ~10-min walk to entrance", note: "Security line can be slow", alert: "BE AT ENTRANCE BY 12:45" },
+      { time: "13:00", what: "ENTER PALACE — booked 1:00 PM Passport ×4", note: "State Apartments + Hall of Mirrors (~1.5h)", alert: null },
+      { time: "14:30", what: "Gardens + Musical Fountains", note: "Fountains run weekends in summer — today is Sunday ✓ · bag/picnic OK", alert: null },
+      { time: "17:00", what: "Gardens wind down", note: "Palace closes 18:30", alert: null },
+      { time: "18:00", what: "🚆 RER C back to Paris", note: "~40 min", alert: null },
+      { time: "19:30", what: "Dinner in Paris (veg spot)", note: "", alert: null },
+    ]
+  },
+  {
+    id: 8,
+    chip: "Jul 6 🚌",
+    name: "Monday Jul 6",
+    theme: "Big Bus Paris · 24h hop-on-hop-off",
+    events: [
+      { time: "09:30", what: "Late breakfast · metro to first Big Bus stop", note: "", alert: null },
+      { time: "10:00", what: "🚌 Board Big Bus (24h hop-on-hop-off)", note: "Buses every 10–20 min · validate ticket · bring earphones for commentary", alert: null },
+      { time: "10:30", what: "Arc de Triomphe — rooftop", note: "Entry included in your ticket · ~284 steps or lift", alert: null },
+      { time: "12:00", what: "Hop off: Champs-Élysées — lunch", note: "Veg bistro or falafel", alert: null },
+      { time: "13:30", what: "Trocadéro — best Eiffel view + photos", note: "", alert: null },
+      { time: "14:30", what: "Champ de Mars / Eiffel area", note: "Going UP the tower = separate timed ticket — book separately if you want it", alert: null },
+      { time: "16:00", what: "Louvre exterior + Tuileries (hop-on/off)", note: "Check last-bus time so you're not stranded", alert: null },
+      { time: "17:30", what: "Notre-Dame / Île de la Cité", note: "Exterior · reconstruction largely done", alert: null },
+      { time: "20:00", what: "Dinner near the Eiffel", note: "Eiffel sparkles 5 min on the hour after dark 🌟", alert: null },
+    ]
+  },
+  {
+    id: 9,
+    chip: "Jul 7 ✈",
+    name: "Tuesday Jul 7",
+    theme: "Paris → Toronto (heading home)",
+    events: [
+      { time: "08:30", what: "Relaxed breakfast + pack", note: "Doubletree checkout by 12:00", alert: null },
+      { time: "09:30", what: "Metro to Saint-Germain", note: "", alert: null },
+      { time: "10:00", what: "Café de Flore — coffee + tartines/salad", note: "172 Bd Saint-Germain · skip the egg dishes", alert: null },
+      { time: "11:00", what: "Light Seine / Latin Quarter stroll", note: "", alert: null },
+      { time: "12:00", what: "Collect bags from the Doubletree", note: "", alert: null },
+      { time: "13:30", what: "🚐 Uber transfer → CDG", note: "~77.48 CAD · ~1 hr", alert: "Be at CDG by ~15:15 (2.5h before departure)" },
+      { time: "15:15", what: "Check in / bag drop / security at CDG", note: "Check-in closes ~17:45", alert: null },
+      { time: "18:45", what: "✈ Depart CDG → arrive Toronto YYZ 21:00", note: "Boarding ~18:00 · veg meal pre-ordered 🎉", alert: null },
+    ]
+  },
+];
+
+// ─── RENDER ITINERARY ────────────────────────────────────────────────
+function renderItinerary(dayId) {
+  const rail = document.getElementById('dayRail');
+  const content = document.getElementById('dayContent');
+  const day = days[dayId];
+
+  // Chips
+  rail.innerHTML = days.map(d => `
+    <button class="day-chip ${d.id === dayId ? 'active' : ''}" onclick="renderItinerary(${d.id})">${d.chip}</button>
+  `).join('');
+
+  // Content
+  let html = `
+    <div class="day-header">
+      <div class="day-name">${day.name}</div>
+      <div class="day-theme">${day.theme}</div>
+    </div>
+    <div class="timeline">
+  `;
+  day.events.forEach(e => {
+    html += `
+      <div class="timeline-item">
+        <div class="t-time">${e.time}</div>
+        <div class="t-body">
+          <div class="t-what">${e.what}</div>
+          ${e.note ? `<div class="t-note">${e.note}</div>` : ''}
+          ${e.alert ? `<div class="t-alert">⚠ ${e.alert}</div>` : ''}
+        </div>
+      </div>
+    `;
+  });
+  html += `</div>`;
+  content.innerHTML = html;
+
+  // Scroll chip into view
+  setTimeout(() => {
+    const activeChip = rail.querySelector('.active');
+    if (activeChip) activeChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, 50);
+}
+
+// ─── TAB SWITCHING ───────────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────
+// Auto-select today's day if within trip window
+(function init() {
+  const today = new Date();
+  const tripStart = new Date('2026-06-28');
+  const diffDays = Math.floor((today - tripStart) / 86400000);
+  const startDay = (diffDays >= 0 && diffDays <= 9) ? diffDays : 0;
+  renderItinerary(startDay);
+})();
+</script>
+</body>
+</html>
